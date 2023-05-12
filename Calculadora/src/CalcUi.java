@@ -11,7 +11,8 @@ import javax.swing.JButton;
  * @author MatheusF
  */
 public class CalcUi extends javax.swing.JFrame {
-    double num1 = 0, num2 = 0, result = 0;
+
+    float num1 = 0, num2 = 0, result = 0;
     char operator;
     private boolean abrirParenteses = true;
 
@@ -41,7 +42,9 @@ public class CalcUi extends javax.swing.JFrame {
 
         jCalculadora = new javax.swing.JPanel();
         jResult = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jTResult = new javax.swing.JTextField();
+        jTCalc = new javax.swing.JTextField();
         jNumeros = new javax.swing.JPanel();
         jBLimpa = new javax.swing.JButton();
         jBParentes = new javax.swing.JButton();
@@ -67,20 +70,59 @@ public class CalcUi extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculadora");
         setMinimumSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(600, 600));
         setResizable(false);
 
         jCalculadora.setBackground(new java.awt.Color(102, 102, 102));
         jCalculadora.setMaximumSize(new java.awt.Dimension(600, 600));
         jCalculadora.setMinimumSize(new java.awt.Dimension(600, 600));
+        jCalculadora.setPreferredSize(new java.awt.Dimension(600, 600));
 
         jResult.setBackground(new java.awt.Color(153, 153, 153));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(466, 56));
+
+        jTResult.setBackground(new java.awt.Color(255, 255, 255));
         jTResult.setFont(new java.awt.Font("Dialog", 1, 26)); // NOI18N
+        jTResult.setText(" ");
+        jTResult.setBorder(null);
         jTResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTResultActionPerformed(evt);
             }
         });
+
+        jTCalc.setEditable(false);
+        jTCalc.setBackground(new java.awt.Color(255, 255, 255));
+        jTCalc.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTCalc.setForeground(new java.awt.Color(0, 0, 0));
+        jTCalc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTCalc.setBorder(null);
+        jTCalc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTCalcActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jTResult, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTCalc, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTCalc, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTResult, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+        );
 
         javax.swing.GroupLayout jResultLayout = new javax.swing.GroupLayout(jResult);
         jResult.setLayout(jResultLayout);
@@ -88,14 +130,14 @@ public class CalcUi extends javax.swing.JFrame {
             jResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jResultLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTResult, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jResultLayout.setVerticalGroup(
             jResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jResultLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTResult, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jResultLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -443,13 +485,13 @@ public class CalcUi extends javax.swing.JFrame {
         jCalculadoraLayout.setHorizontalGroup(
             jCalculadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jCalculadoraLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(167, 167, 167))
             .addGroup(jCalculadoraLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
         jCalculadoraLayout.setVerticalGroup(
             jCalculadoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +500,7 @@ public class CalcUi extends javax.swing.JFrame {
                 .addComponent(jResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(jNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(79, 79, 79))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -482,14 +524,16 @@ public class CalcUi extends javax.swing.JFrame {
 
     private void jBDiviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDiviActionPerformed
         if (evt.getSource() == jBDivi) {
-            num1 = Double.parseDouble(jTResult.getText());
+            num1 = Float.parseFloat(jTResult.getText());
             operator = '/';
+            jTResult.setText(jTResult.getText() + "÷");
+            jTCalc.setText(jTCalc.getText() + jTResult.getText());
             jTResult.setText("");
         }
     }//GEN-LAST:event_jBDiviActionPerformed
 
     private void jBParentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBParentesActionPerformed
-         if (abrirParenteses) {
+        if (abrirParenteses) {
             abrirParenteses();
             abrirParenteses = false;
         } else {
@@ -502,6 +546,7 @@ public class CalcUi extends javax.swing.JFrame {
 
         if (evt.getSource() == jBLimpa) {
             jTResult.setText("");
+            jTCalc.setText("");
         }
     }//GEN-LAST:event_jBLimpaActionPerformed
 
@@ -527,7 +572,8 @@ public class CalcUi extends javax.swing.JFrame {
 
     private void jBIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIgualActionPerformed
         if (evt.getSource() == jBIgual) {
-            num2 = Double.parseDouble(jTResult.getText());
+            jTCalc.setText(jTCalc.getText() + jTResult.getText());
+            num2 = Float.parseFloat(jTResult.getText());
 
             switch (operator) {
                 case '+':
@@ -544,6 +590,9 @@ public class CalcUi extends javax.swing.JFrame {
 
                 case '/':
                     result = num1 / num2;
+                    break;
+                case '%':
+                    result = (num1 / 100) * num2;
                     break;
             }
 
@@ -596,44 +645,60 @@ public class CalcUi extends javax.swing.JFrame {
 
     private void jBVirgulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVirgulaActionPerformed
         if (evt.getSource() == jBVirgula) {
-            jTResult.setText(jTResult.getText().concat(","));
+            jTResult.setText(jTResult.getText().concat("."));
         }
     }//GEN-LAST:event_jBVirgulaActionPerformed
 
     private void jBDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteActionPerformed
         if (evt.getSource() == jBDelete) {
             String string = jTResult.getText();
-            jTResult.setText("");
+            jTResult.setText(jTResult.getText().substring(0, jTResult.getText().length() - 1));
         }
     }//GEN-LAST:event_jBDeleteActionPerformed
 
     private void jBMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMaisActionPerformed
         if (evt.getSource() == jBMais) {
-            num1 = Double.parseDouble(jTResult.getText());
+            num1 = Float.parseFloat(jTResult.getText());
             operator = '+';
+            jTResult.setText(jTResult.getText() + "+");
+            jTCalc.setText(jTCalc.getText() + jTResult.getText());
             jTResult.setText("");
         }
     }//GEN-LAST:event_jBMaisActionPerformed
 
     private void jBMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMenosActionPerformed
         if (evt.getSource() == jBMenos) {
-            num1 = Double.parseDouble(jTResult.getText());
+            num1 = Float.parseFloat(jTResult.getText());
             operator = '-';
+            jTResult.setText(jTResult.getText() + "-");
+            jTCalc.setText(jTCalc.getText() + jTResult.getText());
             jTResult.setText("");
         }
     }//GEN-LAST:event_jBMenosActionPerformed
 
     private void jBVezesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVezesActionPerformed
         if (evt.getSource() == jBVezes) {
-            num1 = Double.parseDouble(jTResult.getText());
+            num1 = Float.parseFloat(jTResult.getText());
             operator = '*';
+            jTResult.setText(jTResult.getText() + "x");
+            jTCalc.setText(jTCalc.getText() + jTResult.getText());
             jTResult.setText("");
         }
     }//GEN-LAST:event_jBVezesActionPerformed
 
     private void jBPorcentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPorcentoActionPerformed
-        // TODO add your handling code here:
+        if (evt.getSource() == jBPorcento) {
+            num1 = Float.parseFloat(jTResult.getText());
+            operator = '%';
+            jTResult.setText(jTResult.getText() + "%");
+            jTCalc.setText(jTCalc.getText() + jTResult.getText());
+            jTResult.setText("");
+        }
     }//GEN-LAST:event_jBPorcentoActionPerformed
+
+    private void jTCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCalcActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTCalcActionPerformed
 
     /**
      * @param args the command line arguments
@@ -695,7 +760,9 @@ public class CalcUi extends javax.swing.JFrame {
     private javax.swing.JButton jBVirgula;
     private javax.swing.JPanel jCalculadora;
     private javax.swing.JPanel jNumeros;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jResult;
+    private javax.swing.JTextField jTCalc;
     private javax.swing.JTextField jTResult;
     // End of variables declaration//GEN-END:variables
 }
